@@ -20,9 +20,9 @@ Payload::~Payload() {
 }
 
 HRESULT Payload::GetPackageWriter() {
-	hr = SHCreateStreamOnFileEx(outName, STGM_CREATE | STGM_WRITE | STGM_SHARE_EXCLUSIVE, 0, TRUE, NULL, &outStream);
 
-	hr == S_OK ? hr = CreateUri(encryption, Uri_CREATE_CANONICALIZE, 0, &hashMethod) : hr == E_FAIL;
+	//Complicated function stringing that essentially creates stream and then uses a create Uri to Canonicalize the hash data
+	SHCreateStreamOnFileEx(outName, STGM_CREATE | STGM_WRITE | STGM_SHARE_EXCLUSIVE, 0, TRUE, NULL, &outStream) == S_OK ? hr = CreateUri(encryption, Uri_CREATE_CANONICALIZE, 0, &hashMethod) : hr == E_FAIL;
 
 	if (hr == S_OK){
 		packageSettings.forceZip32 = TRUE;

@@ -41,6 +41,7 @@ SynthPackager/x86/*
 SynthPackager/Debug/*
 SynthPackager/Release/*
 SynthPackager/v15/*
+.vs/*
 *.ipch
 *.db
 *.opendb

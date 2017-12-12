@@ -34,6 +34,8 @@ HRESULT Payload::GetPackageWriter() {
 	return hr;
 }
 
+
+
 void Payload::cleanup() {
 	//Only de-allocate and cleanup if exist
 	if (appxFactory)

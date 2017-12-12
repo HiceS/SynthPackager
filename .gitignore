@@ -46,3 +46,4 @@ SynthPackager/v15/*
 *.db
 *.opendb
 *.sou
+*.appx

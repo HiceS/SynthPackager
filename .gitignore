@@ -30,3 +30,18 @@
 *.exe
 *.out
 *.app
+
+#Shawn Doesn't like bad .gitignore
+x86/*
+x64/*
+Debug/*
+Release/*
+SynthPackager/x64/*
+SynthPackager/x86/*
+SynthPackager/Debug/*
+SynthPackager/Release/*
+SynthPackager/v15/*
+*.ipch
+*.db
+*.opendb
+*.sou

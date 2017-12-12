@@ -1,7 +1,9 @@
 #include "stdafx.h"
 
 Payload::Payload(_In_ LPCWSTR out, _Outptr_ IAppxPackageWriter** write) {
+	//Why SHA256? and Not SHA1 ? idk
 	encryption = L"http://www.w3.org/2001/04/xmlenc#sha256";
+
 	writer = write;
 	outName = out;
 
@@ -20,7 +22,7 @@ Payload::~Payload() {
 HRESULT Payload::GetPackageWriter() {
 	hr = SHCreateStreamOnFileEx(outName, STGM_CREATE | STGM_WRITE | STGM_SHARE_EXCLUSIVE, 0, TRUE, NULL, &outStream);
 
-	hr == S_OK ? hr = CreateUri(encryption, Uri_CREATE_CANONICALIZE, 0, &hashMethod) : hr = E_FAIL;
+	hr == S_OK ? hr = CreateUri(encryption, Uri_CREATE_CANONICALIZE, 0, &hashMethod) : hr == E_FAIL;
 
 	if (hr == S_OK){
 		packageSettings.forceZip32 = TRUE;
@@ -29,7 +31,7 @@ HRESULT Payload::GetPackageWriter() {
 
 	hr == S_OK ? hr = CoCreateInstance(__uuidof(appxFactory), NULL, CLSCTX_INPROC_SERVER, __uuidof(IAppxFactory), (LPVOID*)(&appxFactory)) : hr = E_FAIL;
 	
-	cleanup();
+	//cleanup();
 
 	return hr;
 }
@@ -56,7 +58,7 @@ void Payload::cleanup() {
 	if (writer)
 	{
 		//not correct de-allocation - fix later 
-		writer = NULL;
-		delete writer;
+		/*writer = NULL;
+		delete writer;*/
 	}
 }
